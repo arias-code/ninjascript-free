@@ -34,7 +34,6 @@ using NinjaTrader.NinjaScript.DrawingTools;
   Author: arias-code (aria.lopez.dev@gmail.com)
   Current Version: 0.0.1
   Known issues:
-   - (low) SimpleFont object is not serialized and therfore cant be saved to indicator templates. Working on a fix.
 
    ~ Happy Trading :) 
 */
@@ -152,34 +151,27 @@ namespace NinjaTrader.NinjaScript.Indicators.Sakura
 
 		#region Properties
 		[NinjaScriptProperty]
-        [XmlIgnore]
-        [Display(Name = "Font, size, type, style",
-            Description = "Select font, style, size to display on chart",
-            GroupName = "Text",
-            Order = 1)]
-        public Gui.Tools.SimpleFont TextFont
-        { get; set; }
+        	[Display(Name = "Font, size, type, style", Description = "Select font, style, size to display on chart", GroupName = "Text", Order = 1)]
+        	public Gui.Tools.SimpleFont TextFont
+        	{ get; set; }
 
-        [NinjaScriptProperty]
-        [XmlIgnore]
-        [Display(Name = "Text Color", Description = "Color of text", Order = 2, GroupName = "Text")]
-        public Brush TextColor
-        { get; set; }
-        [Browsable(false)]
-        public string TextColorSerialize
-        {
-            get { return Serialize.BrushToString(TextColor); }
-            set { TextColor = Serialize.StringToBrush(value); }
-        }
+        	[NinjaScriptProperty]
+        	[Display(Name = "Text Color", Description = "Color of text", Order = 2, GroupName = "Text")]
+        	public Brush TextColor
+        	{ get; set; }
+        	[Browsable(false)]
+        	public string TextColorSerialize
+        	{
+            	get { return Serialize.BrushToString(TextColor); }
+            	set { TextColor = Serialize.StringToBrush(value); }
+        	}
 
-        [NinjaScriptProperty]
-		[XmlIgnore]
+        	[NinjaScriptProperty]
 		[Display(Name = "MarginToRight", Description = "Distance from bar to timer", Order = 3, GroupName = "Display Options")]
 		public int MarginToRight
 		{ get; set; }
 
 		[NinjaScriptProperty]
-		[XmlIgnore]
 		[Display(Name = "HeightMargin", Description = "How far above/below the bar the timer is", Order = 4, GroupName = "Display Options")]
 		public float HeightMargin 
 		{ get; set; }
